@@ -1,0 +1,5 @@
+﻿Category,risk_low,risk_high
+very low risk,0,10
+low risk,11,14
+moderate risk,15,19
+high risk,20,100

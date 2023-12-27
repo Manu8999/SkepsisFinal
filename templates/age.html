@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TEST PDF</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+        crossorigin="anonymous">
+</head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Skepsis</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Framingham</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="greek.html">HellenicSCORE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="heart_failure.html">Heart Failure Risk</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pdf.html">Extract PDF</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <h1 style="text-align:center">
+      PROJECT SKEPSIS Auto Calculate
+    </h1>
+    </p>
+    <h3 style="text-align:center">{{ "Please check your age data:"}}</h3>
+    <h6 style="text-align:center">{{ "(Tips: The age range of the Hellenic test is between 40 and 79, please make sure the age between 40 and 79)"}}</h6>
+    <form action="/age" method="post">
+      <input type="text" name="age" id="ageInput" value="" placeholder="Age?" style="position:relative; left:760px; top:2px">
+      </p>
+    
+      <h3 style="text-align:center">{{ "Please check your Systolic Blood Pressure data:"}}</h3>
+      <h6 style="text-align:center">{{ "(Tips: The blood pressure tested by the Hellenic test is systolic blood pressure. The range of systolic blood pressure is 80mm Hg to 200mm Hg.)"}}</h6>
+      <input type="text" name="bloodpressure" id="bloodpressureInput" value="" placeholder="Systolic Blood Pressure?" style="position:relative; left:760px; top:2px">
+      </p>
+
+      <h3 style="text-align:center">{{ "Please check your Total Cholestrol (mg/dl) data:"}}</h3>
+      <h6 style="text-align:center">{{ "(Tips: The range of total Cholestrol is 150mg/dl to 400mg/dl.)"}}</h6>
+      <input type="text" name="Cholestrol" id="CholestrolInput" value=""  placeholder="Total Cholestrol (mg/dl)?" style="position:relative; left:760px; top:2px">
+      </p>
+
+      <h3 style="text-align:center">{{ "Please check your gender data:"}}</h3>
+      <h6 style="text-align:center">{{ "(Tips: Please check the gender, and we apologize for any mistakes. Please ensure that the value entered is (male) or (female).)"}}</h6>
+      <input type="text" name="gender" id="genderInput" value=""  placeholder="male or female?" style="position:relative; left:760px; top:2px">
+      </p>
+
+      <h3 style="text-align:center">{{ "Please check your smoking information:"}}</h3>
+      <h6 style="text-align:center">{{ "(Tips: Please check the smoking information, and we apologize for any mistakes. Please ensure that the value entered is (yes) or (no).)"}}</h6>
+      <input type="text" name="smoking" id="smokingInput" value=""  placeholder="yes or no?" style="position:relative; left:760px; top:2px">
+      </p>
+      <style>
+        ::placeholder {
+            /* 修改 placeholder 的颜色 */
+            color:rgb(224, 18, 18);
+        }
+      </style>
+     
+      <h2 style="text-align:center">{{ "plz Make sure input all data & Chick the submit bottom:"}}</h2>
+      <input type="submit" value="Submit" style="position:relative; left:800px; top:2px">
+    
+
+    <div id='age'>{{age}}</div>
+    <div id='bloodpressure'>{{bloodpressure}}</div>
+    <div id='Cholestrol'>{{Cholestrol}}</div>
+    <div id='gender'>{{gender}}</div>
+    <div id='smoking'>{{smoking}}</div>
+
+    <script>
+      setTimeout(() => {
+         // 获取路由参数bloodpressure并保存
+          const bloodpressure = document.getElementById('bloodpressure').innerHTML;
+          if (bloodpressure) {
+           localStorage.setItem('bloodpressure', bloodpressure) // 保存
+          }
+          
+
+         // 获取路由参数Cholestrol并保存
+          const Cholestrol = document.getElementById('Cholestrol').innerHTML;
+          if (Cholestrol) {
+           localStorage.setItem('Cholestrol', Cholestrol) // 保存
+          }
+         
+
+          // 获取路由参数age并保存
+          const age = document.getElementById('age').innerHTML;
+          if (age) {
+           localStorage.setItem('age', age) // 保存
+          }
+          
+          // 获取路由参数gender并保存
+          const gender = document.getElementById('gender').innerHTML;
+          if (gender) {
+           localStorage.setItem('gender', gender) // 保存
+          }
+   
+          // 获取路由参数smoking并保存
+          const smoking = document.getElementById('smoking').innerHTML;
+          if (smoking) {
+           localStorage.setItem('smoking', smoking) // 保存
+          }
+
+          // 将storage写入input
+          const storageBloodpressure = localStorage.getItem('bloodpressure')
+    const bloodpressureArr = storageBloodpressure.slice(2, storageBloodpressure.length - 2) // JSON.parse(storageBloodpressure)
+    console.log(document.getElementById('bloodpressureInput'))
+    document.getElementById('bloodpressureInput').setAttribute('value', bloodpressureArr)
+
+    const storageCholestrol = localStorage.getItem('Cholestrol')
+    const CholestrolArr = storageCholestrol.slice(2, storageCholestrol.length - 2) // JSON.parse(storageCholestrol)
+    console.log(document.getElementById('CholestrolInput'))
+    document.getElementById('CholestrolInput').setAttribute('value', CholestrolArr)
+
+    const storageage = localStorage.getItem('age')
+    const ageArr = storageage.slice(2, storageage.length - 2) // JSON.parse(storageage)
+    console.log(document.getElementById('ageInput'))
+    document.getElementById('ageInput').setAttribute('value', ageArr)
+
+    const storagegender = localStorage.getItem('gender')
+    const genderArr = storagegender.slice(2, storagegender.length - 2) // JSON.parse(storagegender)
+    console.log(document.getElementById('genderInput'))
+    document.getElementById('genderInput').setAttribute('value', genderArr)
+
+
+    const storagesmoking = localStorage.getItem('smoking')
+    const smokingArr = storagesmoking.slice(2, storagesmoking.length - 2) // JSON.parse(storagesmoking)
+    console.log(document.getElementById('smokingInput'))
+    document.getElementById('smokingInput').setAttribute('value', smokingArr)
+
+        }, 300)
+      </script>
+    </form>
+  </body>
+</html>
